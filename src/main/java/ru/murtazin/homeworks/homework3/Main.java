@@ -1,5 +1,6 @@
 package ru.murtazin.homeworks.homework3;
-
+// Домашнее задание 3. Проверено.
+// Выполнен merge branch "homework3" into master
 import java.util.Random;
 import java.util.Scanner;
 
