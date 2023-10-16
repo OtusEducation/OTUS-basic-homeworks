@@ -1,10 +1,7 @@
 package ru.murtazin.homeworks.homework3;
-<<<<<<< HEAD
 // Домашнее задание 3. Проверено.
-// Выполнен merge branch "homework3" into master
-=======
+// Выполнен merge branch "homework3" into "master"
 
->>>>>>> origin/master
 import java.util.Random;
 import java.util.Scanner;
 
