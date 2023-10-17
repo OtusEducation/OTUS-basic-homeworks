@@ -1,6 +1,7 @@
 package ru.murtazin.homeworks.homework4;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class MethodsPart2 {
     /*
@@ -50,11 +51,29 @@ public class MethodsPart2 {
     Метод 3*.
     Реализуйте метод, проверяющий, что все элементы массива идут в порядке убывания или
     возрастания (по выбору пользователя)
-
-    public static void met3() {
-
-    }
     */
+    public static void checkSortArray(int[] array) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Метод 3*");
+        System.out.println("Выберите метод сортировки массива: 1 - прямой, 2 - обратный");
+        int direction = scanner.nextInt();
+        System.out.println("Проверяемый массив " + Arrays.toString(array));
+        boolean sort = true;
+        if (direction == 1) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1])
+                    sort = false;
+            }
+        } else if (direction == 2) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] < array[i + 1])
+                    sort = false;
+            }
+        }
+        String result = sort ? "Массив отсортирован\n" : "Массив не отсортирован\n";
+        System.out.println(result);
+    }
+
     /*
     Метод 4*.
     Реализуйте метод, “переворачивающий” входящий массив

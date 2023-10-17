@@ -16,6 +16,7 @@ public class Main {
         System.out.println("Методы дополнительной части домашнего задания\n");
         MethodsPart2.getArrSumEl(AdditionalMethods.getArrayInt(), AdditionalMethods.getArrayInt(),
                 AdditionalMethods.getArrayInt()); // Метод 1*
+        MethodsPart2.checkSortArray(AdditionalMethods.getArrayInt());
         MethodsPart2.getReverseArray(AdditionalMethods.getArrayInt()); // Метод 4*
     }
 }
