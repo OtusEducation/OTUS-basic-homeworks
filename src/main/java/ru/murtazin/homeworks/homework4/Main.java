@@ -78,22 +78,23 @@ public class Main {
     public static void getArraySumPiece(int[] array) {
         System.out.println("Метод 5.");
         int sum1 = 0, sum2 = 0;
-        int[] arrayNew;
+        int[] arrayExtend;
         // В случае, если количество элементов массива нечетно, увеличиваем размер массива на один,
         // с помощью метода clone(), переносим элементы в новый массив и задаем размер нового массива на один больше
         if (array.length % 2 == 1) {
-            arrayNew = Arrays.copyOf(array, array.length + 1);
-            arrayNew[arrayNew.length - 1] = getRandomNumber(); // выполняем генерацию нового элемента массива
+            arrayExtend = Arrays.copyOf(array, array.length + 1);
+            arrayExtend[arrayExtend.length - 1] = getRandomNumber(); // выполняем генерацию нового элемента массива
         } else {
-            arrayNew = array.clone();
+            arrayExtend = array.clone();
         }
+        System.out.println("Результирующий массив " + Arrays.toString(arrayExtend));
         // Считаем сумму элементов левой части массива
-        for (int i = 0; i < arrayNew.length / 2; i++) {
-            sum1 += arrayNew[i];
+        for (int i = 0; i < arrayExtend.length / 2; i++) {
+            sum1 += arrayExtend[i];
         }
         // Считаем сумму элементов правой части массива
-        for (int i = arrayNew.length / 2; i < arrayNew.length; i++) {
-            sum2 += arrayNew[i];
+        for (int i = arrayExtend.length / 2; i < arrayExtend.length; i++) {
+            sum2 += arrayExtend[i];
         }
         System.out.println("Сумма элементов левой половины массива равна " + sum1 + "\n" +
                 "Сумма элементов правой половины массива равна " + sum2);
