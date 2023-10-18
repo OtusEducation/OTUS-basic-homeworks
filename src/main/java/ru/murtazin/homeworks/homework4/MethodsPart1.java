@@ -65,7 +65,7 @@ public class MethodsPart1 {
      */
     public static void getArraySumHalf(int[] array) {
         System.out.println("Метод 5.");
-        int sum1 = 0, sum2 = 0;
+        int sumLeft = 0, sumRight = 0;
         int[] arrayExtend;
         // В случае, если количество элементов массива нечетно, увеличиваем размер массива на один,
         // с помощью метода clone(), переносим элементы в новый массив и задаем размер нового массива на один больше
@@ -78,17 +78,17 @@ public class MethodsPart1 {
         System.out.println("Результирующий массив " + Arrays.toString(arrayExtend));
         // Считаем сумму элементов левой части массива
         for (int i = 0; i < arrayExtend.length / 2; i++) {
-            sum1 += arrayExtend[i];
+            sumLeft += arrayExtend[i];
         }
         // Считаем сумму элементов правой части массива
         for (int i = arrayExtend.length / 2; i < arrayExtend.length; i++) {
-            sum2 += arrayExtend[i];
+            sumRight += arrayExtend[i];
         }
-        System.out.println("Сумма элементов левой половины массива равна " + sum1 + "\n" +
-                "Сумма элементов правой половины массива равна " + sum2);
-        if (sum1 > sum2) {
+        System.out.println("Сумма элементов левой половины массива равна " + sumLeft + "\n" +
+                "Сумма элементов правой половины массива равна " + sumRight);
+        if (sumLeft > sumRight) {
             System.out.println("Сумма элементов левой части больше\n");
-        } else if (sum2 > sum1) {
+        } else if (sumRight > sumLeft) {
             System.out.println("Сумма элементов правой части больше\n");
         } else {
             System.out.println("Сумма элементов левой и правой половины идентичны\n");

@@ -1,7 +1,6 @@
 package ru.murtazin.homeworks.homework4;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class MethodsPart2 {
     /*
@@ -42,36 +41,81 @@ public class MethodsPart2 {
     Метод 2*.
     Реализуйте метод, проверяющий, что есть “точка” в массиве, в которой сумма левой и правой части
     равны. “Точка находится между элементами”
-
-    public static void met2() {
-
-    }
     */
+    public static void getEqulibInd(int[] arr) {
+        System.out.println("Метод 2*");
+        int equilibindex = -1;
+        int sumAll = 0;
+        System.out.println(Arrays.toString(arr));
+        // Получаем сумму элементов массива
+        for (int i = 0; i < arr.length; i++) {
+            sumAll += arr[i];
+        }
+
+        int sumLeft = 0; // сумма левой части массива
+        int sumRight = 0; // сумма правой части массива
+
+        for (int i = 0; i < arr.length; i++) {
+            sumRight = sumAll - (sumLeft + arr[i]); // получаем сумму правой части
+            sumLeft += arr[i]; // получаем сумму левой части
+            if (sumLeft == sumRight) {
+                equilibindex = i;
+            }
+        }
+        if (equilibindex < 0) {
+            System.out.println("Индекс равновесия не найден\n");
+        } else {
+            System.out.println("Индекс равновесия " + equilibindex + "\n");
+        }
+    }
+
     /*
     Метод 3*.
     Реализуйте метод, проверяющий, что все элементы массива идут в порядке убывания или
     возрастания (по выбору пользователя)
     */
     public static void checkSortArray(int[] array) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Метод 3*");
-        System.out.println("Выберите метод сортировки массива: 1 - прямой, 2 - обратный");
-        int direction = scanner.nextInt();
+        int srt = 0; // -1 - массив недостаточного размера, 0 - значение по умолчанию,
+        // 1 - массив отсортирован, 2 - массив не отсортирован
         System.out.println("Проверяемый массив " + Arrays.toString(array));
-        boolean sort = true;
-        if (direction == 1) {
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] > array[i + 1])
-                    sort = false;
-            }
-        } else if (direction == 2) {
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] < array[i + 1])
-                    sort = false;
+        if (array.length < 2) {
+            srt = -1;
+        } else {
+            if (array[0] < array[1]) { // если первый элемент меньше следующего, проверяем массив на прямую сортировку
+                System.out.println("Проверяем массив на прямую сортировку");
+                for (int i = 0; i < array.length - 1; i++) {
+                    if (array[i] > array[i + 1]) { // если предыдущий элемент больше следующего, массив не отсортирован
+                        srt = 2; // массив не отсортирован
+                        break; // прерываем цикл
+                    }
+                    srt = 1;
+                }
+            } else { // если первый элемент больше следующего, проверяем массив на обратную сортировку
+                System.out.println("Проверяем массив на обратную сортировку");
+                for (int i = 0; i < array.length - 1; i++) {
+                    if (array[i] < array[i + 1]) { // если предыдущий элемент меньше следующего, массив не отсортирован
+                        srt = 2; // массив не отсортирован
+                        break; // прерываем цикл
+                    }
+                    srt = 1; // массив отсортирован
+                }
             }
         }
-        String result = sort ? "Массив отсортирован\n" : "Массив не отсортирован\n";
-        System.out.println(result);
+        switch (srt) {
+            case -1:
+                System.out.println("Количество элементов массива недостаточно для проверки\n");
+                break;
+            case 1:
+                System.out.println("Массив отсортирован\n");
+                break;
+            case 2:
+                System.out.println("Массив не отсортирован\n");
+                break;
+            default:
+                System.out.println("Неизвестная ошибка");
+                break;
+        }
     }
 
     /*
@@ -80,11 +124,12 @@ public class MethodsPart2 {
     */
     public static void getReverseArray(int[] arr) {
         System.out.println("Метод 4*");
-        int[] arrReverse = new int[arr.length];
         System.out.println("Исходный массив " + Arrays.toString(arr));
-        for (int i = 0; i < arr.length; i++) {
-            arrReverse[arr.length - 1 - i] = arr[i];
+        for (int i = 0; i < arr.length / 2; i++) {
+            int util = arr[i];
+            arr[i] = arr[arr.length - i - 1];
+            arr[arr.length - i - 1] = util;
         }
-        System.out.println("Инвертированный массив " + Arrays.toString(arrReverse));
+        System.out.println("Инвертированный массив " + Arrays.toString(arr));
     }
 }
