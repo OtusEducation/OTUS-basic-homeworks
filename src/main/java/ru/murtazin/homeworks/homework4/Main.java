@@ -8,7 +8,8 @@ public class Main {
         System.out.println("Методы основной части домашнего задания\n");
         MethodsPart1.printStringNum("Hello", Math.abs(AdditionalMethods.getRandomNumber()));
         int[] array = AdditionalMethods.getArrayInt();
-        System.out.println("Исходный массив: " + Arrays.toString(array) + "\n");
+        System.out.println();
+        System.out.println("\nИсходный массив: " + Arrays.toString(array) + "\n");
         MethodsPart1.getSumElArr(array.clone(), AdditionalMethods.getRandomNumber()); // Метод 1
         MethodsPart1.getArrayReplaceEl(AdditionalMethods.getRandomNumber(), array.clone()); // Метод 2
         MethodsPart1.getArrayAddElNum(AdditionalMethods.getRandomNumber(), array.clone()); // Метод 3
@@ -23,7 +24,5 @@ public class Main {
         MethodsPart2.getEqulibInd(arr2);
         MethodsPart2.checkSortArray(AdditionalMethods.getArrayInt()); // Метод 3*
         MethodsPart2.getReverseArray(AdditionalMethods.getArrayInt()); // Метод 4*
-
-
     }
 }

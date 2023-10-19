@@ -9,21 +9,27 @@ public class MethodsPart1 {
     */
     public static void printStringNum(String word, int num) {
         System.out.println("Метод 1.");
-        System.out.printf("Количество повторений строки %s равно %d \n", word, num);
-        System.out.println(word.repeat(num) + "\n");
+        String[] arrrayWord = new String[num];
+        for (int i = 0; i < arrrayWord.length; i++) {
+            arrrayWord[i] = word;
+            System.out.print(arrrayWord[i] + " ");
+        }
     }
 
-    /*
-     Метод 2. -Реализуйте метод, принимающий в качестве аргумента целочисленный массив,
-     суммирующий все элементы, значение которых больше 5,
-     и печатающий полученную сумму в консоль.
-     */
+
     public static void getSumElArr(int[] array, int num) {
+        /**
+         * @return Реализуйте метод, принимающий в качестве аргумента целочисленный массив,
+         * суммирующий все элементы, значение которых больше 5,
+         * и печатающий полученную сумму в консоль.
+         */
         System.out.println("Метод 2.");
         System.out.println(Arrays.toString(array));
         int sum = 0;
         for (int i : array) {
-            int a = (i > num) ? (sum += i) : sum;
+            if (i > num) {
+                sum += i;
+            }
         }
         if (sum == 0) {
             System.out.printf("Отсутствуют элементы больше %d \n", num);
@@ -73,7 +79,7 @@ public class MethodsPart1 {
             arrayExtend = Arrays.copyOf(array, array.length + 1);
             arrayExtend[arrayExtend.length - 1] = AdditionalMethods.getRandomNumber(); // выполняем генерацию нового элемента массива
         } else {
-            arrayExtend = array.clone();
+            arrayExtend = array;
         }
         System.out.println("Результирующий массив " + Arrays.toString(arrayExtend));
         // Считаем сумму элементов левой части массива
