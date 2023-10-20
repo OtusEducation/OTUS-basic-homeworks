@@ -25,4 +25,16 @@ public class AdditionalMethods {
         int min = -10;
         return randomInt.nextInt(max - min) + min;
     }
+
+    // Метод для проверки элементов массива на сортировку
+    public static int getSrt(int[] array, int srt) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) { // если предыдущий элемент больше следующего, массив не отсортирован
+                srt = 2; // массив не отсортирован
+                break; // прерываем цикл
+            }
+            srt = 1; // Массив отсортирован
+        }
+        return srt;
+    }
 }

@@ -20,8 +20,8 @@ public class Main {
         // Массивы для проверки метода 2
         int[] arr1 = {1, 1, 1, 1, 1, 3, 4, -2};
         int[] arr2 = {7, 2, 2, 2, 9, 4};
-        MethodsPart2.getEqulibInd(arr1); // Метод 2*
-        MethodsPart2.getEqulibInd(arr2);
+        MethodsPart2.getIndEqulib(arr1); // Метод 2*
+        MethodsPart2.getIndEqulib(arr2);
         MethodsPart2.checkSortArray(AdditionalMethods.getArrayInt()); // Метод 3*
         MethodsPart2.getReverseArray(AdditionalMethods.getArrayInt()); // Метод 4*
     }
