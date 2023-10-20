@@ -1,4 +1,4 @@
-package ru.murtazin.homeworks.homework4;
+package ru.murtazin.homeworks.homework5;
 
 import java.util.Arrays;
 
