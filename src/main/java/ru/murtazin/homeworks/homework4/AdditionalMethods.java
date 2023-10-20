@@ -27,9 +27,9 @@ public class AdditionalMethods {
     }
 
     // Метод для проверки элементов массива на сортировку
-    public static int getSrt(int[] array, int srt) {
+    public static int getSrt(int[] array, int srt, boolean direct) {
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) { // если предыдущий элемент больше следующего, массив не отсортирован
+            if (array[i] > array[i + 1] && direct || array[i] < array[i + 1] && (!direct)) { // проверяем элементы на сортировку
                 srt = 2; // массив не отсортирован
                 break; // прерываем цикл
             }

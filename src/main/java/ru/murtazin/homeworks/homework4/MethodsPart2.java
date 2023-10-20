@@ -69,6 +69,7 @@ public class MethodsPart2 {
     public static void checkSortArray(int[] array) {
         System.out.println("Метод 3*");
         int srt = 0; // -1 - массив недостаточного размера, 0 - значение по умолчанию,
+        boolean direct = true; // true - прямая сортировка, false - обратная сортировка
         // 1 - массив отсортирован, 2 - массив не отсортирован
         System.out.println("Проверяемый массив " + Arrays.toString(array));
         if (array.length < 2) {
@@ -78,9 +79,10 @@ public class MethodsPart2 {
                 System.out.println("Проверяем массив на прямую сортировку");
             } else { // если первый элемент больше следующего, проверяем массив на обратную сортировку
                 System.out.println("Проверяем массив на обратную сортировку");
+                direct = false;
             }
         }
-        srt = AdditionalMethods.getSrt(array, srt);
+        srt = AdditionalMethods.getSrt(array, srt, direct);
         switch (srt) {
             case -1:
                 System.out.println("Количество элементов массива недостаточно для проверки\n");
