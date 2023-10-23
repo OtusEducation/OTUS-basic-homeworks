@@ -25,8 +25,7 @@ public class AdditionalMethods {
         int max = 5; // максимальный размер элемента и длины массива
         int minEl = -10; // минимальный размер элемента массива
         int minLength = 1; // минимальная длина массива
-        int dim = (randomInt.nextInt(max - minLength) + minLength) * 2; // генерируем число в диапазоне 1 - 5
-        // и умножаем на 2 для получения четного числа
+        int dim = (randomInt.nextInt(max - minLength) + minLength); // генерируем размер массива
         int[][] array = new int[dim][dim];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
