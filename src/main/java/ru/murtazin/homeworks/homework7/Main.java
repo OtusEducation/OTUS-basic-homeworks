@@ -3,15 +3,16 @@ package ru.murtazin.homeworks.homework7;
 import java.util.Arrays;
 
 public class Main {
+    public static int[][] arrayUneven = AdditionalMethods.getMultiDimUnevenArray();
+    public static int[][] arrayEven = AdditionalMethods.getMultiDimEvenArray();
+
     public static void main(String[] args) {
-        int[][] array = AdditionalMethods.getArrayInt2();
-        System.out.println("\nИсходный массив: " + Arrays.deepToString(array) + "\n");
-        System.out.println(getSumOfPositiveElements(array)); // Метод 1
-        printSquareOfSymbol(AdditionalMethods.getRandomNumber());  // Метод 2
-        int[][] array1 = {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}};
-        generateArrayWithZeroDiag(array1); // Метод 3
-        System.out.println(findMax(AdditionalMethods.getArrayInt2())); // Метод 4
-        System.out.println(sumElArray(AdditionalMethods.getArrayInt2()));// Метод 5
+        System.out.println("\nИсходный массив: " + Arrays.deepToString(arrayUneven) + "\n");
+        System.out.println(getSumOfPositiveElements(arrayUneven)); // Метод 1
+        printSquareOfSymbol(Math.abs(AdditionalMethods.getRandomNumber()));  // Метод 2
+        generateArrayWithZeroDiag(arrayEven); // Метод 3
+        System.out.println(findMax(arrayUneven)); // Метод 4
+        System.out.println(sumElArray(arrayUneven));// Метод 5
     }
 
 
@@ -40,20 +41,20 @@ public class Main {
      */
     public static void printSquareOfSymbol(int size) {
         System.out.println("Метод 2");
-        char symb = '*';
+        char symbol = '*';
         int num = 0;
         while (num < size) {
             if (num == 0 || num == size - 1) {
                 for (int i = 0; i < size; i++) {
-                    System.out.print(symb + " ");
+                    System.out.print(symbol + " ");
                 }
                 System.out.println();
             } else {
                 for (int i = 0; i < size; i++) {
                     if (i == 0) {
-                        System.out.print(symb + " ");
+                        System.out.print(symbol + " ");
                     } else if (i == size - 1) {
-                        System.out.print(symb + "\n");
+                        System.out.print(symbol + "\n");
                     } else {
                         System.out.print("  ");
                     }
@@ -67,7 +68,7 @@ public class Main {
     /**
      * Метод 3.
      * Реализовать метод, принимающий в качестве аргумента двумерный целочисленный массив,
-     * и зануляющий его диагональные элементы (можете выбрать любую из диагоналей, или занулить обе)
+     * и заменяющий элементы по диагоналям на значение ноль
      */
     private static void generateArrayWithZeroDiag(int[][] mas) {
         System.out.println("Метод 3");
