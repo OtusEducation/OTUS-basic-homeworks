@@ -104,22 +104,44 @@ public class Main {
 
     /**
      * Метод 5.
-     * Реализуйте метод, который считает сумму элементов второй строки двумерного массива,
-     * если второй строки не существует, то в качестве результата необходимо вернуть -1
+     * Реализуйте метод, который считает сумму элементов второй строки/столбца двумерного массива,
+     * если второй строки/столбца не существует, то в качестве результата необходимо вернуть -1
      */
+    // TODO: 23.10.2023 Доработать метод
+    // TODO 1. Некорректно работает подсчет суммы элементов во втором столбце. Исправлено
+    // TODO 2. Учесть ситуацию, при которой вторая строка массива может быть пустой,
+    //  но подсчет суммы элементов во втором столбце произойдет. Исправлено
     public static String sumElArray(int[][] array) {
         System.out.println("Метод 5");
-        int sum = 0;
-        String result;
+        final int EL = 1;
+        int sumElSecondStr = 0;
+        int sumElSecondCol = 0;
+        int numCol = array.length;
+        String sSumElSecondStr;
+        String sSumElSecondCol;
         System.out.println(Arrays.deepToString(array));
-        if (array.length < 2) {
-            result = "Второй строки массива не существует\n";
+        if (array.length < 2 || array[EL].length == 0) {
+            sSumElSecondStr = "Второй строки массива не существует\n";
         } else {
-            for (int i = 0; i < array[1].length; i++) {
-                sum += array[1][i];
+            for (int i = 0; i < array[EL].length; i++) {
+                sumElSecondStr += array[EL][i];
             }
-            result = "Сумма элементов второй строки массива равна " + sum + "\n";
+            sSumElSecondStr = "Сумма элементов второй строки массива равна " + sumElSecondStr + "\n";
         }
-        return result;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].length < 2) {
+                numCol--;
+            } else {
+                sumElSecondCol += array[i][EL];
+            }
+        }
+        if (numCol == 0) {
+            sSumElSecondCol = "Второго столбца массива не существует\n";
+        } else {
+            sSumElSecondCol = "Сумма элементов второго столбца массива равна " + sumElSecondCol + "\n";
+        }
+
+        return sSumElSecondStr + sSumElSecondCol;
     }
 }
