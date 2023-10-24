@@ -107,20 +107,16 @@ public class Main {
      * Реализуйте метод, который считает сумму элементов второй строки/столбца двумерного массива,
      * если второй строки/столбца не существует, то в качестве результата необходимо вернуть -1
      */
-    // TODO: 23.10.2023 Доработать метод
-    // TODO 1. Некорректно работает подсчет суммы элементов во втором столбце. Исправлено
-    // TODO 2. Учесть ситуацию, при которой вторая строка массива может быть пустой,
-    //  но подсчет суммы элементов во втором столбце произойдет. Исправлено
     public static String sumElArray(int[][] array) {
         System.out.println("Метод 5");
-        final int EL = 1;
-        int sumElSecondStr = 0;
-        int sumElSecondCol = 0;
-        int numCol = array.length;
-        String sSumElSecondStr;
-        String sSumElSecondCol;
-        System.out.println(Arrays.deepToString(array));
-        if (array.length < 2 || array[EL].length == 0) {
+        final int EL = 1; // индекс анализируемой строки/столбца
+        int sumElSecondStr = 0; // сумма элементов в строке
+        int sumElSecondCol = 0; // сумма элементов в столбце
+        int numCol = array.length; // количество столбцов в массиве
+        String sSumElSecondStr; // текст для суммы элементов в строке
+        String sSumElSecondCol; // текст для суммы элементов в столбце
+        System.out.println("Анализируемый массив " + Arrays.deepToString(array));
+        if (array.length < EL + 1 || array[EL].length == 0) { // второй элемент массива отсутствует/пустой
             sSumElSecondStr = "Второй строки массива не существует\n";
         } else {
             for (int i = 0; i < array[EL].length; i++) {
@@ -130,7 +126,8 @@ public class Main {
         }
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i].length < 2) {
+            if (array[i].length < EL + 1) { // Если второй столбец отсутствует в массиве, уменьшаем переменную.
+                // Если достигли значения ноль, значит второй столбец отсутствует
                 numCol--;
             } else {
                 sumElSecondCol += array[i][EL];
