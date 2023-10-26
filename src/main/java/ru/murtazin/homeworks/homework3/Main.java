@@ -16,7 +16,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите число от 1 до 5 для вызова соответствующего метода. " +
                 "Для вызова всех методов введите 0");
-        int result = scan.nextInt(); // Результат ввода поьзователя
+        int result = scan.nextInt(); // Результат ввода пользователя
         System.out.println();
         switch (result) {
             case 0:
@@ -112,7 +112,7 @@ public class Main {
         System.out.println("Результат равен = " + initValue);
     }
 
-    // Рандомайзер для типа int
+    // Генератор псевдослучайных чисел для типа int
     public static int getRandomNumber() {
         // Генерируем число в диапазоне -100 - 100
         int max = 100;
@@ -120,7 +120,7 @@ public class Main {
         return randomInt.nextInt(max - min) + min;
     }
 
-    // Рандомайзер для типа boolean
+    // Генератор псевдослучайных чисел для типа boolean
     public static boolean getRandomBool() {
         return randomBool.nextBoolean();
     }
