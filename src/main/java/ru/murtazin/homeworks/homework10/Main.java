@@ -1,35 +1,81 @@
 package ru.murtazin.homeworks.homework10;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner scan = new Scanner(System.in);
     public final static int YEAR = 40;
 
-    public static void main(String[] args) {
-        char program;
+    public static String program;
+
+    public static String obj;
+
+    public static String[] colors = {
+            "белый",
+            "синий",
+            "красный",
+            "оранжевый",
+            "черный",
+            "серый",
+            "коричневый",
+            "фиолетовый",
+            "розовый"
+    };
+
+    public static String repaint(String color) {
+        boolean result = true;
+        String newColor;
+        System.out.println("Текущий цвет коробки " + color);
         do {
-            System.out.println("Введите символ");
-            String choice = scan.next();
-            program = choice.toLowerCase().charAt(0);
+            System.out.println("Введите цвет");
+            newColor = scan.next();
+            if (color.equals(newColor)) {
+                System.out.println("Коробка уже имеет данный цвет");
+
+            } else {
+                for (int i = 0; i < colors.length; i++) {
+                    if (newColor.equals(colors[i])) {
+                        System.out.println("Цвет доступен");
+                        result = false;
+                    }
+                }
+                if (result) {
+                    System.out.println("Неизвестный цвет");
+                } else {
+                    continue;
+                }
+            }
+
+            System.out.println(result);
+        } while (result);
+        return newColor;
+    }
+
+    public static void main(String[] args) {
+        do {
+            System.out.println("Добро пожаловать!\nСписок доступных команд:\n" +
+                    "user - программа \"Пользователь\"\n" +
+                    "box - программа \"Коробка\"\n" +
+                    "quit - выход\n");
+            System.out.println("Введите команду:");
+            program = scan.next();
             switch (program) {
-                case 'u':
+                case "user":
                     usersInfo();
                     break;
-                case 'b':
+                case "box":
                     boxes();
                     break;
-                case 'q':
-                case 'e':
-                case 'в':
+                case "quit":
                     System.out.println("Выход из программы");
                     break;
                 default:
-                    System.out.println("Неверный ввод");
+                    System.out.println("Неизвестная команда");
                     break;
             }
-        } while (program != 'q' && program != 'e');
+        } while (!program.equals("quit"));
     }
 
     public static void usersInfo() {
@@ -71,9 +117,59 @@ public class Main {
 
     public static void boxes() {
         // Описание ящиков
-        Box box1 = new Box("Red", 1.0, 1.0, 1.0, false, true);
+        Box box1 = new Box(colors[0], 1.0, 1.0, 1.0, false);
+        System.out.println("Доступна коробка\n");
         System.out.println(box1.getInfo());
-        box1.setCoverPosition(true);
-        System.out.println(box1.getInfo());
+        System.out.println("Вы можете положить предмет в коробку, если она пустая и крышка открыта.\n" +
+                "Если в коробке уже хранится предмет, то вы можете заменить ее на новый.\n" +
+                "Список доступных команд:\n" +
+                "info - информация о коробке\n" +
+                "repaint - изменить цвет\n" +
+                "open - открыть крышку\n" +
+                "close - закрыть крышку\n" +
+                "put - положить предмет\n" +
+                "delete - удалить предмет\n" +
+                "replace - заменить предмет\n");
+        do {
+            System.out.println("Введите команду:");
+            program = scan.next();
+            switch (program) {
+                case "info":
+                    box1.getInfo();
+                    break;
+                case "repaint":
+                    System.out.println("Список доступных цветов\n");
+                    System.out.println(Arrays.toString(colors));
+                    box1.repaint(repaint(box1.getColor()));
+                    break;
+                case "open":
+                    box1.setCoverPosition(true);
+                    System.out.println(box1.coverPosition());
+                    break;
+                case "close":
+                    box1.setCoverPosition(false);
+                    System.out.println(box1.coverPosition());
+                    break;
+                case "put":
+                    System.out.println("Введите предмет");
+                    obj = scan.next();
+                    box1.putContent(obj);
+                    break;
+                case "delete":
+                    box1.deleteContent();
+                    break;
+                case "replace":
+                    System.out.println("Введите предмет");
+                    obj = scan.next();
+                    box1.replaceContent(obj);
+                    break;
+                case "quit":
+                    System.out.println("Выход из программы");
+                    break;
+                default:
+                    System.out.println("Неизвестная команда");
+                    break;
+            }
+        } while (!program.equals("quit"));
     }
 }
