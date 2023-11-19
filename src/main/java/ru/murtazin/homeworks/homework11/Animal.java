@@ -14,10 +14,10 @@ public abstract class Animal {
     }
 
     public double run(double distance) {
-        if (distance > getEndurance()) {
+        if (distance > this.endurance) {
             return -1;
         } else {
-            return distance / speedRun;
+            return distance / this.speedRun;
         }
     }
 

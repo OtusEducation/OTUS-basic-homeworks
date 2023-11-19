@@ -18,7 +18,7 @@ import java.util.Scanner;
  * Добавьте метод info(), который выводит в консоль состояние животного.
  */
 public class Main {
-    public static String competitions;
+    public static String competition;
     public static int distance;
 
     public static void main(String[] args) {
@@ -33,11 +33,10 @@ public class Main {
                 "swim - плавание\n" +
                 "info - информация об участниках\n" +
                 "quit - завершить соревнования");
-        System.out.println(dog.getEndurance());
         do {
             System.out.println("Выберите дисциплину");
-            competitions = scan.next();
-            switch (competitions) {
+            competition = scan.next();
+            switch (competition) {
                 case "run":
                     System.out.println("Введите дистанцию бега");
                     distance = scan.nextInt();
@@ -64,7 +63,7 @@ public class Main {
                     System.out.println("Неизвестная дисциплина");
                     break;
             }
-        } while (!competitions.equals("quit"));
+        } while (!competition.equals("quit"));
     }
 
     private static void timeToRun(Animal animal) {
@@ -84,7 +83,7 @@ public class Main {
 
     private static void timeToSwim(Animal animal) {
         if (animal.getClass().equals(Cat.class)) {
-            System.out.println("Кот не умеет плавать\n");
+            System.out.println(animal.getName() + " не умеет плавать\n");
         } else if (animal.getClass().equals(Dog.class)) {
             if (animal.swim(distance) > 0.0) {
                 System.out.println(animal.getName() + " преодолел дистанцию за " + animal.swim(distance) + " с");

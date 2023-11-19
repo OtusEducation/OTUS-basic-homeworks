@@ -7,10 +7,10 @@ public class Horse extends Animal{
 
     @Override
     public double swim(double distance) {
-        if (distance > getEndurance() / 4.0) {
+        if (distance > this.endurance / 4.0) {
             return -1;
         } else {
-            return distance / speedSwim;
+            return distance / this.speedSwim;
         }
     }
 }
