@@ -1,10 +1,10 @@
 package ru.murtazin.homeworks.homework11;
 
-public class Animal {
-    private String name;
-    private int speedRun;
-    private int speedSwim;
-    private int endurance;
+public abstract class Animal {
+    public String name;
+    public int speedRun;
+    public int speedSwim;
+    public int endurance;
 
     public Animal(String name, int speedRun, int speedSwim, int endurance) {
         this.name = name;
@@ -23,8 +23,7 @@ public class Animal {
         }
     }
 
-    public void swim(float distance) {
-    }
+    public abstract void swim(float distance);
 
     public void info() {
         System.out.println("Имя: " + this.name + "\n" +
@@ -35,10 +34,6 @@ public class Animal {
 
     public String getName() {
         return name;
-    }
-
-    public int getSpeedRun() {
-        return speedRun;
     }
 
     public void setEndurance(int endurance) {

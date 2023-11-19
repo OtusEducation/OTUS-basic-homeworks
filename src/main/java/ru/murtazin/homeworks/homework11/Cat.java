@@ -7,17 +7,7 @@ public class Cat extends Animal {
     }
 
     @Override
-    public void run(float distance) {
-        super.run(distance);
-    }
-
-    @Override
     public void swim(float distance) {
         System.out.println("Кот не умеет плавать");
-    }
-
-    @Override
-    public void info() {
-        super.info();
     }
 }

@@ -5,26 +5,16 @@ public class Dog extends Animal {
         super(name, speedRun, speedSwim, endurance);
     }
 
-    @Override
-    public void run(float distance) {
-        super.run(distance);
-    }
 
     @Override
     public void swim(float distance) {
-        if (distance > super.getEndurance() / 2.0) {
-            System.out.println(super.getName() + " не сможет преодолеть дистанцию плавания");
+        if (distance > this.endurance / 2.0) {
+            System.out.println(this.name + " не сможет преодолеть дистанцию плавания");
         } else {
-            System.out.println(super.getName() + " затратил " + distance / super.getSpeedSwim() + " с " +
+            System.out.println(this.name + " затратил " + distance / super.getSpeedSwim() + " с " +
                     "на преодоление дистанции плавания");
-            super.setEndurance(super.getEndurance() - (int) distance * 2);
-            System.out.println("Остаток выносливости " + super.getEndurance());
+            super.setEndurance(this.endurance - (int) distance * 2);
+            System.out.println("Остаток выносливости " + this.endurance);
         }
-        super.swim(distance);
-    }
-
-    @Override
-    public void info() {
-        super.info();
     }
 }
