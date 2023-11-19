@@ -6,14 +6,11 @@ public class Horse extends Animal{
     }
 
     @Override
-    public void swim(float distance) {
-        if (distance > this.endurance / 4.0) {
-            System.out.println(this.name + " не сможет преодолеть дистанцию плавания");
+    public double swim(double distance) {
+        if (distance > getEndurance() / 4.0) {
+            return -1;
         } else {
-            System.out.println(this.name + " затратил " + distance / super.getSpeedSwim() + " с " +
-                    "на преодоление дистанции плавания");
-            super.setEndurance(this.endurance - (int) distance * 2);
-            System.out.println("Остаток выносливости " + this.endurance);
+            return distance / speedSwim;
         }
     }
 }
