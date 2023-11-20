@@ -3,57 +3,38 @@ package ru.murtazin.homeworks.homework12;
 public class Cat {
     private String name;
     private int appetite;
-    private boolean hunger;
+    private boolean hunger = true;
 
-    public Cat(String name, int appetite, boolean hunger) {
+    public Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
-        this.hunger = hunger;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAppetite() {
         return appetite;
     }
 
-    public void setAppetite(int appetite) {
-        this.appetite = appetite;
-    }
 
     public boolean isHunger() {
         return hunger;
     }
 
-    public void setHunger(boolean hunger) {
-        this.hunger = hunger;
-    }
-
-    public String hunger() {
-        if (isHunger()) {
-            return "Кот голоден";
+    public boolean eaten(Plate plate) {
+        if (plate.getCurAmountFood() >= getAppetite()) {
+            this.hunger = false;
+            return true;
         } else {
-            return "Кот сыт";
-        }
-    }
-
-    public void eaten(int food) {
-        if (food > getAppetite()) {
-            System.out.println("Кот поел");
-            setHunger(false);
-        } else {
-            System.out.println("Не хватило еды");
-            setHunger(true);
+            this.hunger = true;
+            return false;
         }
     }
 
     public void info() {
-        System.out.println("Имя: " + name + "\n" + hunger());
+        System.out.println("Имя: " + this.name + "\n" + (this.hunger ? "Кот поел" : "Кот голоден"));
     }
 }

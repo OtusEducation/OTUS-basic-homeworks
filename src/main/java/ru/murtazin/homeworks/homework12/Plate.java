@@ -1,20 +1,15 @@
 package ru.murtazin.homeworks.homework12;
 
 public class Plate {
-    private int maxAmountFood;
+    private final int maxAmountFood;
     private int curAmountFood;
 
-    public Plate(int maxAmountFood, int curAmountFood) {
+    public Plate(int maxAmountFood) {
         this.maxAmountFood = maxAmountFood;
-        this.curAmountFood = curAmountFood;
     }
 
     public int getMaxAmountFood() {
         return maxAmountFood;
-    }
-
-    public void setMaxAmountFood(int maxAmountFood) {
-        this.maxAmountFood = maxAmountFood;
     }
 
     public int getCurAmountFood() {
