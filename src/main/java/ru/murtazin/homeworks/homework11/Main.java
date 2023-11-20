@@ -32,7 +32,7 @@ public class Main {
                 "run - бег\n" +
                 "swim - плавание\n" +
                 "info - информация об участниках\n" +
-                "quit - завершить соревновани");
+                "quit - завершить соревнования");
         do {
             System.out.println("Выберите дисциплину");
             competition = scan.next();
