@@ -18,12 +18,12 @@ import java.util.Scanner;
  * Добавьте метод info(), который выводит в консоль состояние животного.
  */
 public class Main {
-    public static String competitions;
+    public static String competition;
     public static int distance;
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Dog dog = new Dog("Barni", 4, 3, 30);
+        Dog dog = new Dog("Barni", 4.0, 3.0, 30.0);
         Horse horse = new Horse("Spirit", 10, 5, 100);
         Cat cat = new Cat("Snowball", 6, 0, 25);
         System.out.println("Добро пожаловать!\n" +
@@ -35,21 +35,21 @@ public class Main {
                 "quit - завершить соревнования");
         do {
             System.out.println("Выберите дисциплину");
-            competitions = scan.next();
-            switch (competitions) {
+            competition = scan.next();
+            switch (competition) {
                 case "run":
                     System.out.println("Введите дистанцию бега");
                     distance = scan.nextInt();
-                    dog.run(distance);
-                    cat.run(distance);
-                    horse.run(distance);
+                    timeToRun(dog);
+                    timeToRun(cat);
+                    timeToRun(horse);
                     break;
                 case "swim":
                     System.out.println("Введите дистанцию плавания");
                     distance = scan.nextInt();
-                    dog.swim(distance);
-                    cat.swim(distance);
-                    horse.swim(distance);
+                    timeToSwim(dog);
+                    timeToSwim(cat);
+                    timeToSwim(horse);
                     break;
                 case "info":
                     dog.info();
@@ -63,6 +63,53 @@ public class Main {
                     System.out.println("Неизвестная дисциплина");
                     break;
             }
-        } while (!competitions.equals("quit"));
+        } while (!competition.equals("quit"));
+    }
+
+    private static void timeToRun(Animal animal) {
+        if (animal.run(distance) > 0.0) {
+            System.out.println(animal.getName() + " преодолел дистанцию за " + animal.run(distance) + " с");
+            animal.setEndurance(animal.getEndurance() - distance);
+            System.out.println("Остаток выносливости " +
+                    (animal.getEndurance() != 0 ? animal.getEndurance() :
+                            animal.getEndurance() + "\nТребуется отдых") + "\n");
+        } else {
+            System.out.println(animal.getName() + " преодолеет только " + animal.getEndurance() + " м");
+            animal.setEndurance(0.0);
+            System.out.println("Остаток выносливости у " + animal.getName() + " равен " + animal.getEndurance() +
+                    ".\nТребуется отдых.\n");
+        }
+    }
+
+    private static void timeToSwim(Animal animal) {
+        if (animal.getClass().equals(Cat.class)) {
+            System.out.println(animal.getName() + " не умеет плавать\n");
+        } else if (animal.getClass().equals(Dog.class)) {
+            if (animal.swim(distance) > 0.0) {
+                System.out.println(animal.getName() + " преодолел дистанцию за " + animal.swim(distance) + " с");
+                animal.setEndurance(animal.getEndurance() - distance * 2);
+                System.out.println("Остаток выносливости " +
+                        (animal.getEndurance() != 0 ? animal.getEndurance() :
+                                animal.getEndurance() + "\nТребуется отдых") + "\n");
+            } else {
+                System.out.println(animal.getName() + " преодолеет только " + animal.getEndurance() / 2.0 + " м");
+                animal.setEndurance(0.0);
+                System.out.println("Остаток выносливости у " + animal.getName() + " равен " + animal.getEndurance() +
+                        ".\nТребуется отдых.\n");
+            }
+        } else if (animal.getClass().equals(Horse.class)) {
+            if (animal.swim(distance) > 0.0) {
+                System.out.println(animal.getName() + " преодолел дистанцию за " + animal.swim(distance) + " с");
+                animal.setEndurance(animal.getEndurance() - distance * 4);
+                System.out.println("Остаток выносливости " +
+                        (animal.getEndurance() != 0 ? animal.getEndurance() :
+                                animal.getEndurance() + "\nТребуется отдых") + "\n");
+            } else {
+                System.out.println(animal.getName() + " преодолеет только " + animal.getEndurance() / 4.0 + " м");
+                animal.setEndurance(0.0);
+                System.out.println("Остаток выносливости у " + animal.getName() + " равен " + animal.getEndurance() +
+                        ".\nТребуется отдых.\n");
+            }
+        }
     }
 }
