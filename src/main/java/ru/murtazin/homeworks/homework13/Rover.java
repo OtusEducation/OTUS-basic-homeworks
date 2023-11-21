@@ -5,7 +5,7 @@ public class Rover implements Transport {
     private final double volumeTank = 200;
 
     @Override
-    public boolean move() {
+    public boolean move(int passability) {
         return false;
     }
 
@@ -15,7 +15,7 @@ public class Rover implements Transport {
     }
 
     @Override
-    public void test(Terrain terrain) {
+    public void info() {
 
     }
 }

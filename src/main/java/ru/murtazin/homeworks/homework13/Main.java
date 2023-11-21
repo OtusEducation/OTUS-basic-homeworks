@@ -19,7 +19,6 @@ package ru.murtazin.homeworks.homework13;
  */
 //TODO Структура программы
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -39,13 +38,17 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Добро пожаловать\n");
-        Transport transport;
-        Car car = new Car();
-        command = scan.next();
+        Transport[] transport = {new Car(), new Horse(), new Bicycle(), new Rover()};
+        System.out.println(Terrain.HIGHWAY.getName());
+        do {
+            for (int i = 0; i < transport.length; i++) {
+                transport[i].move(Terrain.FOREST.getPassability());
+            }
+            command = scan.next();
+        } while (!command.equals("quit"));
+
         for (int i = 0; i < Terrain.values().length; i++) {
-            System.out.print(Terrain.values()[i].getName() + ", ");
+            System.out.print(Terrain.values()[i].getPassability() + " - " + Terrain.values()[i].getName() + ", ");
         }
-        System.out.println();
-        car.test(Terrain.PLAIN);
     }
 }

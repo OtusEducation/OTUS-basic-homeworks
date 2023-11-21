@@ -4,7 +4,7 @@ public class Bicycle implements Transport {
     private final String name = "Велосипед";
 
     @Override
-    public boolean move() {
+    public boolean move(int passability) {
         return false;
     }
 
@@ -14,7 +14,7 @@ public class Bicycle implements Transport {
     }
 
     @Override
-    public void test(Terrain terrain) {
+    public void info() {
 
     }
 }

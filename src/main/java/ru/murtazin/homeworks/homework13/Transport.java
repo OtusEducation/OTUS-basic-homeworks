@@ -1,7 +1,7 @@
 package ru.murtazin.homeworks.homework13;
 
 public interface Transport {
-    boolean move();
+    boolean move(int passability);
     int consumption();
-    void test(Terrain terrain);
+    void info();
 }

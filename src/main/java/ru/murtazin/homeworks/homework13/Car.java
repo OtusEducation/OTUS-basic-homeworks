@@ -4,9 +4,23 @@ public class Car implements Transport {
     private final String name = "Автомобиль";
     private final double volumeTank = 50;
 
+    public String getName() {
+        return name;
+    }
+
+    public double getVolumeTank() {
+        return volumeTank;
+    }
+
     @Override
-    public boolean move() {
-        return false;
+    public boolean move(int passability) {
+        if (passability >= 2 && passability <= 4) {
+            System.out.println(this.name + " едет");
+            return true;
+        } else {
+            System.out.println(this.name + " не проедет");
+            return false;
+        }
     }
 
     @Override
@@ -15,11 +29,7 @@ public class Car implements Transport {
     }
 
     @Override
-    public void test(Terrain terrain) {
-        if (terrain.getPassability() >= 2 && terrain.getPassability() <= 4) {
-            System.out.println(this.name + " может передвигаться по " + terrain.getName());
-        } else {
-            System.out.println(this.name + " не может передвигаться по " + terrain.getName());
-        }
+    public void info() {
+        System.out.println(this.name);
     }
 }
