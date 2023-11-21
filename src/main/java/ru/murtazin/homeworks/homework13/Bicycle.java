@@ -12,4 +12,9 @@ public class Bicycle implements Transport {
     public int consumption() {
         return 0;
     }
+
+    @Override
+    public void test(Terrain terrain) {
+
+    }
 }

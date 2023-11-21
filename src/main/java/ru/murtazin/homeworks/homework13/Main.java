@@ -19,6 +19,7 @@ package ru.murtazin.homeworks.homework13;
  */
 //TODO Структура программы
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -28,14 +29,23 @@ import java.util.Scanner;
  * - экстремальность передвижения, при этом выбирается наиболее экстремальная трасса для выше выбранного транспорта;
  * - существуют ограничения для передвижения транспорта по определенным поверхностям
  * - в процессе передвижения рассчитывается расход (бензина, выносливости)
- * Доработать требования
+ * - местность имеет индекс, у транспорта есть ограничение на передвижение по местности, в зависимости от индекса
  */
 
 
 public class Main {
     public static Scanner scan = new Scanner(System.in);
+    public static String command;
+
     public static void main(String[] args) {
         System.out.println("Добро пожаловать\n");
-
+        Transport transport;
+        Car car = new Car();
+        command = scan.next();
+        for (int i = 0; i < Terrain.values().length; i++) {
+            System.out.print(Terrain.values()[i].getName() + ", ");
+        }
+        System.out.println();
+        car.test(Terrain.PLAIN);
     }
 }
