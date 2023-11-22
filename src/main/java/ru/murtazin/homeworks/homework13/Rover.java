@@ -5,6 +5,11 @@ public class Rover implements Transport {
     private final double volumeTank = 200;
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public boolean move(int passability) {
         return false;
     }

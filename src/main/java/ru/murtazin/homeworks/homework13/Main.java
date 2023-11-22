@@ -37,12 +37,23 @@ public class Main {
     public static String command;
 
     public static void main(String[] args) {
+        Human human = new Human();
+        Transport transport;
         System.out.println("Добро пожаловать\n");
-        Transport[] transport = {new Car(), new Horse(), new Bicycle(), new Rover()};
         System.out.println(Terrain.HIGHWAY.getName());
         do {
-            for (int i = 0; i < transport.length; i++) {
-                transport[i].move(Terrain.FOREST.getPassability());
+            command = scan.next();
+            switch (command){
+                case ("car"):
+                    transport = new Car();
+                    human.move(transport);
+                    break;
+                case("rover"):
+                    transport = new Rover();
+                    human.move(transport);
+                    break;
+                default:
+                    human.move();
             }
             command = scan.next();
         } while (!command.equals("quit"));

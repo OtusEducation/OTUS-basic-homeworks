@@ -14,6 +14,10 @@ public class Horse implements Transport {
             return false;
         }
     }
+    @Override
+    public String getName() {
+        return null;
+    }
 
     @Override
     public int consumption() {

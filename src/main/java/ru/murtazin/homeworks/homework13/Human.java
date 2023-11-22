@@ -1,13 +1,12 @@
 package ru.murtazin.homeworks.homework13;
 
 public class Human {
-    private String meansOfTransport;
 
-    public void move (Transport transport) {
-        if (transport == null) {
-            System.out.println("Передвижение пешком");
-        } else {
-            System.out.println("Передвижение на " + transport.toString());
-        }
+    public void move(Transport transport) {
+        System.out.println("Передвижение на " + transport.getName());
+    }
+
+    public void move() {
+        System.out.println("Передвижение пешком");
     }
 }

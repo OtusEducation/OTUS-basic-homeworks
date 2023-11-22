@@ -4,6 +4,11 @@ public class Bicycle implements Transport {
     private final String name = "Велосипед";
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public boolean move(int passability) {
         return false;
     }
