@@ -38,15 +38,8 @@ public class Main {
         do {
             System.out.println("Давайте покормим голодных котиков\n");
             for (int i = 0; i < cats.length; i++) {
-                if (!cats[i].isHunger()) {
-                    System.out.println(cats[i].getName() + " уже поел");
-
-                } else {
-                    System.out.println(cats[i].getName() + (cats[i].eaten(plate) ? " покушал" : " не хватило еды"));
-                    if (cats[i].eaten(plate)) {
-                        plate.setCurAmountFood(plate.getCurAmountFood() - cats[i].getAppetite());
-                        countHungerCats -= 1;
-                    }
+                if (cats[i].eaten(plate)) {
+                    countHungerCats -= 1;
                 }
             }
             if (countHungerCats == 0) {
@@ -56,7 +49,6 @@ public class Main {
                 plate.setCurAmountFood(numFood);
             }
         } while (countHungerCats != 0);
-
     }
 
     private static int determPlateSize(Cat[] cats) {
